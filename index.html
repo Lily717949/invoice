@@ -1,4 +1,4 @@
-<!doctype html>
+!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
@@ -38,6 +38,82 @@
   document.getElementById('no').textContent=no;
   document.getElementById('amt').textContent=amt==='-'?'-':'¥'+amt+'（含税）';
   document.getElementById('date').textContent=date||'-';
+</script>
+</body>
+</html>
+https://lily717949.github.io/invoice/?no=25444000000004924454&date=20250624&amt=2126299.00
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>信息展示</title>
+  <style>
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",Arial;
+      background:#fff;
+      color:#111;
+    }
+    .wrap{
+      max-width:520px;
+      margin:0 auto;
+      padding:28px 18px;
+    }
+    h1{
+      text-align:center;
+      font-size:26px;
+      margin:10px 0 14px;
+    }
+    .tip{
+      text-align:center;
+      color:#666;
+      font-size:14px;
+      line-height:1.6;
+      margin-bottom:20px;
+    }
+    .card{
+      border:1px solid #eee;
+      border-radius:14px;
+      padding:18px;
+    }
+    .row{
+      display:flex;
+      justify-content:space-between;
+      padding:14px 0;
+      border-bottom:1px solid #eee;
+    }
+    .row:last-child{border-bottom:none}
+    .k{color:#666}
+    .v{font-weight:600}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>信息展示</h1>
+    <div class="tip">
+      以下内容为系统展示信息，仅供查看。
+    </div>
+    <div class="card">
+      <div class="row"><div class="k">编号</div><div class="v" id="a">-</div></div>
+      <div class="row"><div class="k">金额</div><div class="v" id="c">-</div></div>
+      <div class="row"><div class="k">日期</div><div class="v" id="b">-</div></div>
+    </div>
+  </div>
+
+<script>
+  const p = new URLSearchParams(location.search);
+  const a = p.get('a') || '-';
+  const b = p.get('b') || '';
+  const c = p.get('c') || '-';
+
+  const date = b.length === 8
+    ? b.slice(0,4) + '.' + b.slice(4,6) + '.' + b.slice(6,8)
+    : b;
+
+  document.getElementById('a').textContent = a;
+  document.getElementById('b').textContent = date || '-';
+  document.getElementById('c').textContent = c === '-' ? '-' : '¥' + c;
 </script>
 </body>
 </html>
