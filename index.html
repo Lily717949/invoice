@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>发票信息</title>
+  <style>
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",Arial;background:#fff;color:#111}
+    .wrap{max-width:520px;margin:0 auto;padding:28px 18px}
+    h1{text-align:center;font-size:28px;margin:10px 0 14px}
+    .tip{text-align:center;color:#666;font-size:14px;line-height:1.6;margin-bottom:20px}
+    .card{border:1px solid #eee;border-radius:14px;padding:18px}
+    .row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #eee}
+    .row:last-child{border-bottom:none}
+    .k{color:#666}
+    .v{font-weight:600}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>发票信息</h1>
+    <div class="tip">
+      以下信息仅为二维码所含信息，并不代表查验发票真伪的结果
+    </div>
+    <div class="card">
+      <div class="row"><div class="k">发票号码</div><div class="v" id="no">-</div></div>
+      <div class="row"><div class="k">合计金额</div><div class="v" id="amt">-</div></div>
+      <div class="row"><div class="k">开票日期</div><div class="v" id="date">-</div></div>
+    </div>
+  </div>
+
+<script>
+  const p=new URLSearchParams(location.search);
+  const no=p.get('no')||'-';
+  const amt=p.get('amt')||'-';
+  const d=p.get('date')||'';
+  const date=d.length===8?d.slice(0,4)+'.'+d.slice(4,6)+'.'+d.slice(6,8):d;
+  document.getElementById('no').textContent=no;
+  document.getElementById('amt').textContent=amt==='-'?'-':'¥'+amt+'（含税）';
+  document.getElementById('date').textContent=date||'-';
+</script>
+</body>
+</html>
