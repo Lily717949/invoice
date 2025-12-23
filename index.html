@@ -103,9 +103,9 @@ https://lily717949.github.io/invoice/?no=25444000000004924454&date=20250624&amt=
 
 <script>
   const p = new URLSearchParams(location.search);
-  const a = p.get('a') || '-';
-  const b = p.get('b') || '';
-  const c = p.get('c') || '-';
+  const a = p.get('no') || '-';
+  const b = p.get(' date') || '';
+  const c = p.get('amt') || '-';
 
   const date = b.length === 8
     ? b.slice(0,4) + '.' + b.slice(4,6) + '.' + b.slice(6,8)
